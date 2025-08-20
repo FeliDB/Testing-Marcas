@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Zona Centro",
+    "location": {
+      "lat": -31.4,
+      "lng": -64.2
+    },
+    "radius": 10
+  },
+  {
+    "name": "Zona Norte",
+    "location": {
+      "lat": -31.5,
+      "lng": -64.3
+    },
+    "radius": 15
+  },
+  {
+    "radius": 12
+  },
+  {
+    "personId": 2,
+    "location": {
+      "lat": -31.4,
+      "lng": -64.2
+    },
+    "radius": 5
+  },
+  {
+    "location": {
+      "lat": -31.41,
+      "lng": -64.23
+    }
+  },
+  {
+    "status": "in_route"
+  },
+  {
+    "location": {
+      "lat": -31.4,
+      "lng": -64.2
+    },
+    "radius": 10
+  },
+  {
+    "zoneId": 1
+  },
+  {
+    "zoneIds": [1, 2]
+  }
+]

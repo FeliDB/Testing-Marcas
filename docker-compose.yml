@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres
+    container_name: postgres-contenedor
+    environment:
+      POSTGRES_USER: felipe
+      POSTGRES_PASSWORD: "12345"
+      POSTGRES_DB: deliverydb
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  pgdata:
+    driver: local

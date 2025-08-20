@@ -1,0 +1,4 @@
+-Problema de especificacion de status de un delivery en el createDelivery()
+-En el assignZone(), en el response debe mostrar tambien los datos de location
+-Error en zoneService con el put
+
