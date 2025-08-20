@@ -3,8 +3,8 @@ import { DeliveryController } from 'src/controllers/delivery.controller';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { deliveryEntity } from '../entities/delivery.entity';
-import { locationEntity } from 'src/entities/location.entity';
-import { zoneEntity } from 'src/entities/zone.entity';
+import { locationEntity } from '../entities/location.entity';
+import { zoneEntity } from '../entities/zone.entity';
 
 @Injectable()
 export class DeliveryService {
@@ -187,7 +187,7 @@ export class DeliveryService {
             message: "Delivery deleted"
         };
     }
-    
+
     async getDeliveries(){
         return this.deliveryRepository.find({
             relations: ['location', 'zones'],

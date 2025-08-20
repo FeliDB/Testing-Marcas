@@ -7,8 +7,6 @@ import { ZoneController } from './controllers/zone.controller';
 import { DeliveryController } from './controllers/delivery.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { entities } from './entities';
-import { AuthMiddleware } from './middlewares/auth.middleware';
-import { MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 
 
 @Module({
@@ -25,12 +23,7 @@ import { MiddlewareConsumer, RequestMethod } from '@nestjs/common';
     }),
     TypeOrmModule.forFeature(entities) // entidades por cada modulo
   ],
-  
   controllers: [AppController, ZoneController, DeliveryController],
   providers: [AppService, DeliveryService, ZoneService],
 })
-export class AppModule { configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(AuthMiddleware)
-      .forRoutes({ path: 'delivery/*', method: RequestMethod.ALL });
-  } }
+export class AppModule { }

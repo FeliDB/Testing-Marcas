@@ -3,10 +3,9 @@ import { ZoneController } from 'src/controllers/zone.controller';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { zoneEntity } from '../entities/zone.entity';
-import { locationEntity } from 'src/entities/location.entity';
+import { locationEntity } from '../entities/location.entity';
 import { Request } from '@nestjs/common'
 import { Response } from '@nestjs/common';
-import { last } from 'rxjs';
 
 
 @Injectable()

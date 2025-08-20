@@ -1,6 +1,14 @@
-import { Body, Controller, Post, Get, Put, Param, Patch, Delete } from '@nestjs/common';
+import { Body, Controller, Post, Get, Put, Param, Patch, Delete, UseGuards, Headers} from '@nestjs/common';
 import { stat } from 'fs';
-import { DeliveryService } from 'src/services/delivery.service';
+import { DeliveryService } from '../services/delivery.service';
+
+
+import { AuthGuard } from '../middlewares/auth.middleware';
+import { Reflector } from '@nestjs/core';
+import { Permissions } from 'src/middlewares/decorators/permissions.decorator';
+
+export const Roles = Reflector.createDecorator<string[]>();
+
 
 
 @Controller("delivery")
@@ -8,7 +16,13 @@ export class DeliveryController {
 
     constructor(private deliveryService: DeliveryService){}
 
+    @Get()
+    getDelivery(){
+        return this.deliveryService.getDeliveries();
+    }
+
     @Post()
+    // @Roles(['admin']) 
     postDelivery(@Body() body: any){
         return this.deliveryService.postDelivery(body);
     }
@@ -22,21 +36,23 @@ export class DeliveryController {
     putDeliveryStatus(@Param("id") id: number, @Body() body: any){
         return this.deliveryService.putDeliveryStatus(id, body);
     }
-
+    
     @Get("findByProximity")
-    findByProximity(@Body() body: any){
+    findByProximity(@Body() body: any) {
         return this.deliveryService.findByProximity(body);
     }
-
+ 
     @Post(":id/assignZone")
     assignZone(@Param("id") id: number, @Body() body: any){
         return this.deliveryService.assignZone(id, body);
     }
+    
 
     @Get("findByZone")
     findByZone(@Body() body: any){
         return this.deliveryService.findByZone(body);
     }
+    
 
     @Get(":id/zones")
     getZones(@Param("id") id: number){
@@ -51,11 +67,6 @@ export class DeliveryController {
     @Delete(":id")
     deleteDelivery(@Param("id") id: number){
         return this.deliveryService.deleteDelivery(id);
-    }
-
-    @Get()
-    getDelivery(){
-        return this.deliveryService.getDeliveries();
     }
 
 }
